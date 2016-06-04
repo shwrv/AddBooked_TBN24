@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdvBooked.master.cs" Inherits="MasterPageAdvBooked" %>
+
+
+<script type="text/javascript">
+    function Search_Gridview(strKey, strGV) {
+        var strData = strKey.value.toLowerCase().split(" ");
+        var tblData = document.getElementById(strGV);
+        var rowData;
+        for (var i = 1; i < tblData.rows.length; i++) {
+            rowData = tblData.rows[i].innerHTML;
+            var styleDisplay = 'none';
+            for (var j = 0; j < strData.length; j++) {
+                if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                    styleDisplay = '';
+                else {
+                    styleDisplay = 'none';
+                    break;
+                }
+            }
+            tblData.rows[i].style.display = styleDisplay;
+        }
+    }
+</script>
+
+ 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color: #DBDBDB">
+
+    <form id="form1" runat="server">
+
+          
+
+    <div style="color: #FFCCFF">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        <script type="text/javascript">
+            function Search_Gridview(strKey, strGV) {
+                var strData = strKey.value.toLowerCase().split(" ");
+                var tblData = document.getElementById(strGV);
+                var rowData;
+                for (var i = 1; i < tblData.rows.length; i++) {
+                    rowData = tblData.rows[i].innerHTML;
+                    var styleDisplay = 'none';
+                    for (var j = 0; j < strData.length; j++) {
+                        if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                            styleDisplay = '';
+                        else {
+                            styleDisplay = 'none';
+                            break;
+                        }
+                    }
+                    tblData.rows[i].style.display = styleDisplay;
+                }
+            }
+</script>
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
